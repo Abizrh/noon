@@ -1,0 +1,115 @@
+.sidebar {
+    width: 220px;
+    background: rgb(0, 0, 0);
+    height: 100vh;
+  }
+  
+  .logo {
+    padding-top: 15px;
+    padding-left: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .logo h3 {
+    text-decoration: none;
+    color: var(--second-color);
+  }
+  
+  .logo img {
+    width: 50px;
+  }
+  
+  .side__box {
+    padding-top: 2rem;
+  }
+  
+  .heading {
+    padding-left: 2rem;
+    color: gray;
+    font-size: 14px;
+  }
+  
+  .box__two {
+    margin-top: 30px;
+  }
+  
+  .menu__icon{
+      display: none;
+  }
+  
+  @media (max-width: 1200px) {
+    .sidebar {
+      width: 70px;
+      padding-right: 10px;
+    }
+  
+    .sidebar .heading {
+      display: none;
+    }
+  
+    .logo {
+      padding-left: 13px;
+    }
+  
+    .logo img {
+      width: 40px;
+    }
+  
+    .logo h3 {
+      display: none;
+    }
+  }
+  @media (max-width: 600px) {
+    .sidebar {
+      position: absolute;
+      top: 0;
+      left: -300px;
+      transition: .3s;
+      z-index: 1100;
+    }
+  
+    .sidebar__show {
+      left: 0;
+      transition: .3s;
+    }
+  
+    .logo h3 {
+      display: block;
+    }
+  
+    .menu__icon {
+      position: fixed;
+      top: 1.2rem;
+      right: 1rem;
+      display: block;
+      color: var(--four-color);
+      cursor: pointer;
+    }
+  
+    .menu__icon .MuiSvgIcon-root {
+      font-size: 30px;
+    }
+  
+    .side__show {
+      width: 220px;
+      left: 0;
+      z-index: 1100;
+    }
+  }
+  
+  .layer{
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 0, 0, 0.514);
+      height: 100vh;
+      z-index: 100;
+      display: none;
+  }
+  
+  .layer__show{
+      display: block;
+  }
