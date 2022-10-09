@@ -1,0 +1,44 @@
+.widgets {
+    flex: 0.3;
+    background: rgb(0, 0, 0);
+    backdrop-filter: blur(10px);
+    height: 100vh;
+    z-index: 1100;
+  }
+  
+  .popular__box::-webkit-scrollbar {
+    width: 2px;
+    scroll-behavior: smooth;
+  }
+  
+  ::-webkit-scrollbar-thumb{
+    border-radius: 10px;
+    background: var(--second-color);
+  }
+  
+  .tag__box {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 10px;
+  }
+  
+  .widgets .heading {
+    margin: 13px 0;
+    padding-left: 0;
+    font-size: 18px;
+    color: var(--four-color);
+  }
+  
+  .popular__box {
+    padding: 0px 15px;
+    overflow-y: scroll;
+    /* height: 60vh; */
+  }
+  
+  
+  @media (max-width:1000px) {
+    .widgets{
+      display: none;
+    }
+  }
+  

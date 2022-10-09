@@ -1,0 +1,68 @@
+.moviesRowLoad{
+    background-color: rgb(19, 18, 18);
+    border-radius: 10px;
+    transition: .3s;
+    position: relative;
+    margin-bottom: 10px;
+}
+
+.img__ {
+    background-color: black;
+    max-height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.moviesRowLoad img:hover{
+    background-color: black;
+    transform: scale(1.1);
+    border: 1px solid rgb(0, 0, 0);
+}
+
+.favLoad{
+    background-color: black;
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.50);
+    color: var(--second-color);
+    padding: 5px;
+    border-radius: 0px 0px 10px 0px;
+    cursor: pointer;
+    backdrop-filter: blur(10px);
+}
+
+.favLoad .MuiSvgIcon-root:hover{
+    color: var(--second-color);
+}
+
+
+.moviesRowLoad img{
+    background-color: black;
+    max-height: 250px;
+    border-radius: 10px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+
+.gridMoviesLoad{
+    background-color: black;
+    flex: 1 1;
+}
+
+
+@media (max-width:350px) {
+    .gridMoviesLoad{
+        background-color: black;
+        flex: 1;
+    }
+
+    .gridMoviesLoad img{
+        background-color: black;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+    }
+}

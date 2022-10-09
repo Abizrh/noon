@@ -1,0 +1,19 @@
+.tag{
+    padding: 10px 10px;
+    background: var(--five-color);
+    width: fit-content;
+    border-radius: 5px;
+    cursor: pointer;
+    margin: 5px;
+    color: gray;
+}
+
+.tag:hover{
+    background: var(--second-color);
+    color: var(--four-color);
+}
+
+.activee{
+    background: var(--second-color);
+    color: var(--four-color);
+}
