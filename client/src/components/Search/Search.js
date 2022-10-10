@@ -13,49 +13,67 @@ export const Search = () => {
   const dispatch = useDispatch();
   const movies = useSelector((state) => state.movie);
   useEffect(() => {
-    dispatch(fetchGenre())
-  }, [])
+    dispatch(fetchGenre());
+  }, []);
 
-
+  // useEffect(() => {
+  //   // searchRecord()
+  //   dispatch(fetchSearch(query))
+  //   .finally(() => setLoading(false))
+  //   .catch(() => setError(true));
+  // }, [])
   // console.log(movies, '<======');
-  const movieGenre = movies.genres?.genres
+  const movieGenre = movies.genres?.genres;
 
   const handleSearch = (e) => {
     e.preventDefault();
     dispatch(fetchSearch(query))
-      .finally(() => setLoading(false))
-      .catch(() => setError(true));
+    .finally(() => setLoading(false))
+    .catch(() => setError(true));
   };
 
-  console.log(movies.search, "<==============");
+ 
+
+  console.log(movies.search, '<=======')
+  const popcorn =
+    "https://as2.ftcdn.net/v2/jpg/02/07/53/73/1000_F_207537392_hQeHBy8BI4oFPzDmhjF94IHb1Tu8jZyG.jpg";
+
+
   return (
     <>
       <div className="searchh">
         <div className="search__top">
-          <div className="heading">{query} Results</div>
+          <div className="heading"> Results</div>
           <form className="search" onSubmit={(e) => handleSearch(e)}>
-            <SearchIcon />
-            <input
-              type="text"
-              placeholder="search..."
-              value={query}
-              maxLength="20"
-              onChange={(e) => setQuery(e.target.value)}
-            />
+          <SearchIcon />
+          <input
+            type="text"
+            placeholder="search..."
+            value={query}
+            maxLength="20"
+            onChange={(e) => setQuery(e.target.value)}
+          />
           </form>
         </div>
         <div className="home__box">
           {/* {loading && <h1>Loading...</h1>}
         {error && <h1>Something Went Wrong !</h1>} */}
+          {movies?.search?.results?.length <= 0 && (
+            <h2>
+              Sorry we did'nt found what you looking for, make sure your search
+              was right.
+            </h2>
+          )}
           {!loading &&
             !error &&
             movies?.search?.results?.map((el) => {
               return (
                 <MovieRow
                   grid
+                  key={el.id}
                   id={el?.id}
                   img={el?.poster_path || el?.backdrop_path}
-                  // popcorn={popcorn}
+                  popcorn={popcorn}
                   title={el.original_title || el.original_name || el.title}
                   release_date={el.release_date || el.first_air_date}
                   rate={el.vote_average}

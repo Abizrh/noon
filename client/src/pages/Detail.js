@@ -1,8 +1,9 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { LazyLoad } from "../components/LazyLoad/LazyLoad";
+import { LazyLoad } from "../components/LazyLoad/Spinner";
 import { fetchDetail } from "../store/actions/action-movie";
+import { PlayArrow, Language } from "@mui/icons-material";
 
 export const Detail = () => {
   const base_url = "https://image.tmdb.org/t/p/original";
@@ -10,8 +11,17 @@ export const Detail = () => {
   const dispatch = useDispatch();
   const { type, id } = useParams();
   const info = { type, id };
-
+  const [string, setString] = useState(150);
+  const [show, setShow] = useState("More");
   const movie = useSelector((state) => state.movie);
+
+  const stringHandler = () => {
+    setString(1500);
+    setShow("");
+  };
+
+  const trunc = (str, num) =>
+    str?.length > num ? str.substr(0, num - 1) + "..." : str;
 
   const backHandler = () => {
     if (window.history.state && window.history.state.idx > 0) {
@@ -32,8 +42,12 @@ export const Detail = () => {
         className="detail"
         style={{
           backgroundSize: "cover",
-            backgroundImage: `url(${base_url}${movie?.detail.backdrop_path || movie?.detail.poster_path})`,
+          backgroundImage: `url(${base_url}${
+            movie?.detail.backdrop_path || movie?.detail.poster_path
+          })`,
           backgroundPosition: "center center",
+          boxShadow: "#000 0 2px 10px",
+          backgroundColor: "rgb(59, 59, 59)",
         }}
       ></div>
       <div className="layer"></div>
@@ -43,18 +57,26 @@ export const Detail = () => {
 
       <div className="movie__content">
         <div className="vote">
-          <span>dfadfdfad%</span>
+          <span>{movie?.detail.vote_average * 10}%</span>
         </div>
         <div className="name">
-          <h3>dfadfdsf</h3>
+          <h3>
+            {movie?.detail.name ||
+              movie?.detail.original_name ||
+              movie?.detail.original_title}
+          </h3>
           <p>
-            {/* {truncate(data?.overview, string)}{" "} */}
-            {/* <span onClick={() => stringHandler()}>{show}</span> */}
+            {trunc(movie?.detail.overview, string)}{" "}
+            <span onClick={() => stringHandler()}>{show}</span>
           </p>
         </div>
         <div className="button__box">
-          <button>{/* <PlayArrowIcon /> Play */}</button>
-          <button>{/* <LanguageIcon /> */}</button>
+          <button>
+            <PlayArrow /> Play
+          </button>
+          <button>
+            <Language />
+          </button>
         </div>
       </div>
     </>

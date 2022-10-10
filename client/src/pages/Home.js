@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Discover } from "../components/Discover/Discover";
-import { LazyLoad } from "../components/LazyLoad/LazyLoad";
+import { LazyLoad, Spinner } from "../components/LazyLoad/Spinner";
 import { MovieRow } from "../components/MovieRow/MovieRow";
 import {
   fetchDiscover,
@@ -72,7 +72,7 @@ export const Home = () => {
 
         <div className="heading">Trending Movies</div>
         <div className="home__box">
-          {loading && <h1>Loading....</h1>}
+          {loading && <Spinner />}
           {error && <h1>something went wrong!</h1>}
 
           {!loading &&
@@ -80,6 +80,7 @@ export const Home = () => {
             movies?.movies?.results?.map((el) => {
               return (
                 <MovieRow
+                  key={el.id}
                   id={el?.id}
                   img={el?.poster_path}
                   title={el.original_title || el.original_name || el.title}
@@ -104,6 +105,7 @@ export const Home = () => {
             movies?.tvShow?.results?.map((el) => {
               return (
                 <MovieRow
+                key={el.id}
                   id={el?.id}
                   img={el?.poster_path}
                   title={el.original_title || el.original_name || el.name}
@@ -126,6 +128,7 @@ export const Home = () => {
             movies?.topRated?.results?.map((el) => {
               return (
                 <MovieRow
+                key={el.id}
                   id={el?.id}
                   img={el?.poster_path}
                   title={el.original_title || el.original_name || el.title}
