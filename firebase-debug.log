@@ -1,0 +1,67 @@
+[debug] [2022-10-10T06:38:03.386Z] ----------------------------------------------------------------------
+[debug] [2022-10-10T06:38:03.388Z] Command:       /usr/local/bin/firebase /home/schrn/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase projects:create noon
+[debug] [2022-10-10T06:38:03.389Z] CLI Version:   11.4.0
+[debug] [2022-10-10T06:38:03.389Z] Platform:      linux
+[debug] [2022-10-10T06:38:03.389Z] Node Version:  v16.16.0
+[debug] [2022-10-10T06:38:03.389Z] Time:          Mon Oct 10 2022 13:38:03 GMT+0700 (Western Indonesia Time)
+[debug] [2022-10-10T06:38:03.390Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-10T06:38:03.392Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-10-10T06:38:03.414Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-10T06:38:03.415Z] > authorizing via signed-in user (abizarah857@gmail.com)
+[debug] [2022-10-10T06:38:11.933Z] > refreshing access token with scopes: []
+[debug] [2022-10-10T06:38:11.935Z] >>> [apiv2][query] POST https://www.googleapis.com/oauth2/v3/token [none]
+[debug] [2022-10-10T06:38:11.935Z] >>> [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-10-10T06:38:12.067Z] <<< [apiv2][status] POST https://www.googleapis.com/oauth2/v3/token 200
+[debug] [2022-10-10T06:38:12.068Z] <<< [apiv2][body] POST https://www.googleapis.com/oauth2/v3/token [omitted]
+[debug] [2022-10-10T06:38:12.231Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2022-10-10T06:38:12.231Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"noon","name":"noon"}
+[debug] [2022-10-10T06:38:13.437Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 400
+[debug] [2022-10-10T06:38:13.437Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"error":{"code":400,"message":"field [project_id] has issue [project_id must be at least 6 characters long]","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"project_id","description":"project_id must be at least 6 characters long"}]},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"url":"https://cloud.google.com/resource-manager/reference/rest/v1/projects"}]}]}}
+[debug] [2022-10-10T06:38:13.441Z] FirebaseError: HTTP Error: 400, field [project_id] has issue [project_id must be at least 6 characters long]
+    at responseToError (/home/schrn/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/home/schrn/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/apiv2.js:288:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to create project. See firebase-debug.log for more info.
+[debug] [2022-10-10T06:40:31.214Z] ----------------------------------------------------------------------
+[debug] [2022-10-10T06:40:31.216Z] Command:       /usr/local/bin/firebase /home/schrn/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase projects:create noon
+[debug] [2022-10-10T06:40:31.217Z] CLI Version:   11.4.0
+[debug] [2022-10-10T06:40:31.217Z] Platform:      linux
+[debug] [2022-10-10T06:40:31.217Z] Node Version:  v16.16.0
+[debug] [2022-10-10T06:40:31.218Z] Time:          Mon Oct 10 2022 13:40:31 GMT+0700 (Western Indonesia Time)
+[debug] [2022-10-10T06:40:31.218Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-10T06:40:31.221Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-10-10T06:40:31.245Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-10T06:40:31.245Z] > authorizing via signed-in user (abizarah857@gmail.com)
+[debug] [2022-10-10T06:40:42.485Z] >>> [apiv2][query] POST https://cloudresourcemanager.googleapis.com/v1/projects [none]
+[debug] [2022-10-10T06:40:42.485Z] >>> [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"projectId":"noon","name":"Noon"}
+[debug] [2022-10-10T06:40:43.655Z] <<< [apiv2][status] POST https://cloudresourcemanager.googleapis.com/v1/projects 400
+[debug] [2022-10-10T06:40:43.656Z] <<< [apiv2][body] POST https://cloudresourcemanager.googleapis.com/v1/projects {"error":{"code":400,"message":"field [project_id] has issue [project_id must be at least 6 characters long]","status":"INVALID_ARGUMENT","details":[{"@type":"type.googleapis.com/google.rpc.BadRequest","fieldViolations":[{"field":"project_id","description":"project_id must be at least 6 characters long"}]},{"@type":"type.googleapis.com/google.rpc.Help","links":[{"url":"https://cloud.google.com/resource-manager/reference/rest/v1/projects"}]}]}}
+[debug] [2022-10-10T06:40:43.658Z] FirebaseError: HTTP Error: 400, field [project_id] has issue [project_id must be at least 6 characters long]
+    at responseToError (/home/schrn/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/responseToError.js:49:12)
+    at RetryOperation._fn (/home/schrn/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/apiv2.js:288:77)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to create project. See firebase-debug.log for more info.
+[debug] [2022-10-10T07:17:02.352Z] ----------------------------------------------------------------------
+[debug] [2022-10-10T07:17:02.355Z] Command:       /usr/local/bin/firebase /home/schrn/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/bin/firebase projects:list
+[debug] [2022-10-10T07:17:02.356Z] CLI Version:   11.4.0
+[debug] [2022-10-10T07:17:02.356Z] Platform:      linux
+[debug] [2022-10-10T07:17:02.356Z] Node Version:  v16.16.0
+[debug] [2022-10-10T07:17:02.357Z] Time:          Mon Oct 10 2022 14:17:02 GMT+0700 (Western Indonesia Time)
+[debug] [2022-10-10T07:17:02.357Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2022-10-10T07:17:02.360Z] >>> [apiv2][query] GET https://firebase-public.firebaseio.com/cli.json [none]
+[debug] [2022-10-10T07:17:02.383Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2022-10-10T07:17:02.383Z] > authorizing via signed-in user (abizarah857@gmail.com)
+[debug] [2022-10-10T07:17:02.391Z] >>> [apiv2][query] GET https://firebase.googleapis.com/v1beta1/projects pageSize=1000
+[debug] [2022-10-10T07:17:03.038Z] <<< [apiv2][status] GET https://firebase-public.firebaseio.com/cli.json 200
+[debug] [2022-10-10T07:17:03.039Z] <<< [apiv2][body] GET https://firebase-public.firebaseio.com/cli.json {"cloudBuildErrorAfter":1594252800000,"cloudBuildWarnAfter":1590019200000,"defaultNode10After":1594252800000,"minVersion":"3.0.5","node8DeploysDisabledAfter":1613390400000,"node8RuntimeDisabledAfter":1615809600000,"node8WarnAfter":1600128000000}
+[debug] [2022-10-10T07:17:32.391Z] Timeout reached making request to https://firebase.googleapis.com/v1beta1/projects?pageSize=1000
+[debug] [2022-10-10T07:17:32.394Z] FirebaseError: Timeout reached making request to https://firebase.googleapis.com/v1beta1/projects?pageSize=1000
+    at RetryOperation._fn (/home/schrn/.cache/firebase/tools/lib/node_modules/firebase-tools/lib/apiv2.js:238:35)
+    at processTicksAndRejections (node:internal/process/task_queues:96:5)
+[error] 
+[error] Error: Failed to list Firebase projects. See firebase-debug.log for more info.

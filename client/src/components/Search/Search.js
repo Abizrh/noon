@@ -16,13 +16,6 @@ export const Search = () => {
     dispatch(fetchGenre());
   }, []);
 
-  // useEffect(() => {
-  //   // searchRecord()
-  //   dispatch(fetchSearch(query))
-  //   .finally(() => setLoading(false))
-  //   .catch(() => setError(true));
-  // }, [])
-  // console.log(movies, '<======');
   const movieGenre = movies.genres?.genres;
 
   const handleSearch = (e) => {
@@ -32,9 +25,6 @@ export const Search = () => {
     .catch(() => setError(true));
   };
 
- 
-
-  console.log(movies.search, '<=======')
   const popcorn =
     "https://as2.ftcdn.net/v2/jpg/02/07/53/73/1000_F_207537392_hQeHBy8BI4oFPzDmhjF94IHb1Tu8jZyG.jpg";
 
