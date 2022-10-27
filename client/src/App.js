@@ -10,12 +10,11 @@ import { Reminder } from './pages/Reminder';
 import { Playlist } from './pages/Playlist';
 import { Live } from './pages/Live';
 import { Setting } from './pages/Setting';
-// import Search from '../src/components/Search/Search'
 
 function App() {
   return (
     <div className="App">
-      {/* <Home /> */}
+      
       <Routes>
         <Route path='/' element={
           <>

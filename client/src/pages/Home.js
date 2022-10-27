@@ -1,17 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState, createContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import { Discover } from "../components/Discover/Discover";
 import { LazyLoad, Spinner } from "../components/LazyLoad/Spinner";
 import { MovieRow } from "../components/MovieRow/MovieRow";
+import { useInfiniteScroll } from "../customHook/useInfiniteScroll";
 import {
-  fetchDiscover,
-  fetchGenre,
+  fetchAllMovies,
   fetchMovie,
   fetchTopRate,
   fetchTVShow,
 } from "../store/actions/action-movie";
 // const base_url = "https://image.tmdb.org/t/p/original";
+
+export const MoviesContext = createContext()
 
 export const Home = () => {
   const discover = {
@@ -31,12 +33,14 @@ export const Home = () => {
     vote_average: 7.9,
     vote_count: 433,
   };
+  const [pages, setPages] = useState(1);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [genres, setGenres] = useState("All");
   const movies = useSelector((state) => state.movie);
-  // const discover = useSelector((state) => console.log(state, '======'))
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { mov, loadMore, load, err } = useInfiniteScroll(pages);
 
   useEffect(() => {
     dispatch(fetchMovie())
@@ -53,15 +57,28 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(fetchGenre())
-  }, [])
+    dispatch(fetchAllMovies());
+  }, []);
 
+  const observer = useRef();
+  const lastMovies = useCallback(
+    (node) => {
+      if (load) return;
+      if (observer.current) observer.current.disconnect();
+      observer.current = new IntersectionObserver((entries) => {
+        if (entries[0].isIntersecting && loadMore) {
+          setPages((prevPage) => prevPage + 1);
+        }
+      });
+      if (node) observer.current.observe(node);
+    },
+    [load, loadMore]
+  );
 
-  // console.log(movies, '<======');
-  const movieGenre = movies.genres?.genres
+  // console.log(movies.all)
 
   return (
-    <>
+    <MoviesContext.Provider>
       <div className="home">
         <div className="heading top__heading">
           <h3>Discovers</h3>{" "}
@@ -71,6 +88,7 @@ export const Home = () => {
         </div>
 
         <div className="heading">Trending Movies</div>
+
         <div className="home__box">
           {loading && <Spinner />}
           {error && <h1>something went wrong!</h1>}
@@ -87,7 +105,6 @@ export const Home = () => {
                   release_date={el.release_date || el.first_air_date}
                   rate={el.vote_average}
                   genre={el.genre_ids}
-                  movieGenre={movieGenre}
                   type="movie"
                 />
               );
@@ -105,14 +122,13 @@ export const Home = () => {
             movies?.tvShow?.results?.map((el) => {
               return (
                 <MovieRow
-                key={el.id}
+                  key={el.id}
                   id={el?.id}
                   img={el?.poster_path}
                   title={el.original_title || el.original_name || el.name}
                   release_date={el.release_date || el.first_air_date}
                   rate={el.vote_average}
                   genre={el.genre_ids}
-                  movieGenre={movieGenre}
                   type="tv"
                 />
               );
@@ -128,20 +144,40 @@ export const Home = () => {
             movies?.topRated?.results?.map((el) => {
               return (
                 <MovieRow
-                key={el.id}
+                  key={el.id}
                   id={el?.id}
                   img={el?.poster_path}
                   title={el.original_title || el.original_name || el.title}
                   release_date={el.release_date || el.first_air_date}
                   rate={el.vote_average}
                   genre={el.genre_ids}
-                  movieGenre={movieGenre}
                   type="movie"
                 />
               );
             })}
         </div>
+
+        {/* <div className="searchh">
+          <div className="heading">All</div>
+          <div className="home__box">
+            {!load &&
+              !err &&
+              mov?.map((el, idx) => {
+                if (mov.length === idx + 1) {
+                  return (
+                    <div key={idx} ref={lastMovies}>
+                      {el}
+                    </div>
+                  );
+                } else {
+                  return <div key={idx}>{el}</div>;
+                }
+              })}
+            {load && <h1>Loading....</h1>}
+            {err && <h1>something went wrong!</h1>}
+          </div>
+        </div> */}
       </div>
-    </>
+    </MoviesContext.Provider>
   );
 };

@@ -1,13 +1,14 @@
-import { FETCH_MOVIES, MOVIE_DISCOVER, MOVIE_TOP_RATED, MOVIE_TV, SEARCH_MOVIE, FETCH_GENRES, FETCH_DETAIL } from "../actions/type"
+import { FETCH_MOVIES, MOVIE_DISCOVER, MOVIE_TOP_RATED, MOVIE_TV, SEARCH_MOVIE, FETCH_GENRES, FETCH_DETAIL, FETCH_ALL_MOVIE } from "../actions/type"
 
 const initState = {
     movies: [],
-    discover: [],
+    filter: [],
     tvShow : [],
     topRated: [],
     search: [],
     genres: [],
-    detail: {}
+    detail: {},
+    all : []
 }
 
 const movieReducer = (state = initState, action) => {
@@ -21,7 +22,7 @@ const movieReducer = (state = initState, action) => {
         case MOVIE_DISCOVER:
             return {
                 ...state,
-                discover: action.payload
+                filter: action.payload
             }
         case MOVIE_TOP_RATED: 
             return {
@@ -48,6 +49,12 @@ const movieReducer = (state = initState, action) => {
                 ...state,
                 detail: action.payload
             }
+        case FETCH_ALL_MOVIE:
+            return {
+                ...state,
+                all : action.payload
+            }
+
         default:
             return state
     }

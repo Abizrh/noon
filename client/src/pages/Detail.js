@@ -35,7 +35,6 @@ export const Detail = () => {
     dispatch(fetchDetail(info));
   }, []);
 
-  console.log(movie?.detail);
   return (
     <>
       <div
