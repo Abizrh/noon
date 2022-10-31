@@ -4,6 +4,9 @@ import { Tag } from "../Tag/Tag";
 // import Tag from '../Tag/Tag'
 
 export const Leftbar = () => {
+  /**
+   * id props is id from category movies
+   */
   return (
     <>
       <div className="widgets">

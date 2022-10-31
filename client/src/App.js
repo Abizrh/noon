@@ -5,7 +5,6 @@ import { Detail } from './pages/Detail';
 import { Sidebar } from './components/Sidebar/Sidebar';
 import { Favorite } from '@mui/icons-material';
 import { Search } from './components/Search/Search';
-import { Leftbar } from './components/Leftbar/GenreTag/GenreTag';
 import { Reminder } from './pages/Reminder';
 import { Playlist } from './pages/Playlist';
 import { Live } from './pages/Live';
@@ -20,7 +19,6 @@ function App() {
           <>
           <Sidebar />
            <Home />
-          <Leftbar />
           I</>
         } />
         

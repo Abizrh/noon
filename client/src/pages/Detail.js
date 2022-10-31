@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { LazyLoad } from "../components/LazyLoad/Spinner";
 import { fetchDetail } from "../store/actions/action-movie";
 import { PlayArrow, Language } from "@mui/icons-material";
+import { BASE_URL } from "../constants/constant";
+import { trunc } from "../helpers/helpers";
+
 
 export const Detail = () => {
-  const base_url = "https://image.tmdb.org/t/p/original";
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const { type, id } = useParams();
@@ -19,9 +20,6 @@ export const Detail = () => {
     setString(1500);
     setShow("");
   };
-
-  const trunc = (str, num) =>
-    str?.length > num ? str.substr(0, num - 1) + "..." : str;
 
   const backHandler = () => {
     if (window.history.state && window.history.state.idx > 0) {
@@ -41,7 +39,7 @@ export const Detail = () => {
         className="detail"
         style={{
           backgroundSize: "cover",
-          backgroundImage: `url(${base_url}${
+          backgroundImage: `url(${BASE_URL}${
             movie?.detail.backdrop_path || movie?.detail.poster_path
           })`,
           backgroundPosition: "center center",

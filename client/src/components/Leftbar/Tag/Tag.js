@@ -11,8 +11,8 @@ export const Tag = ({ tag, active, id }) => {
 
   const handleFilter = () => {
     console.log('masuk', tag, id)
-    dispatch(fetchFilter(id))
-     .finally(() => navigate('search'))
+    // dispatch(fetchFilter(id))
+    //  .finally(() => navigate('search'))
   }
 
   // console.log(movies.filter, '<=====')

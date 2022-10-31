@@ -4,12 +4,12 @@ import './Discover.css'
 import StarIcon from "@mui/icons-material/Star";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import { trunc } from "../../helpers/helpers";
+import { BASE_URL } from "../../constants/constant";
 
 
 export const Discover = ({ discover, type }) => {
-  const base_url = "https://image.tmdb.org/t/p/original";
-  const trunc = (str, num) =>
-    str?.length > num ? str.substr(0, num - 1) + "..." : str;
+
   const year = new Date(discover.release_date);
   return (
     <>
@@ -17,7 +17,7 @@ export const Discover = ({ discover, type }) => {
         <div className="discover__img">
           {/* <img src={`${base_url}${discover.backdrop_path}`} alt={discover.title} /> */}
           <LazyLoadImage 
-           src={`${base_url}${discover.backdrop_path}`} alt={discover.title}
+           src={`${BASE_URL}${discover.backdrop_path}`} alt={discover.title}
            effect="blur"
            />
         </div>

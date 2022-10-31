@@ -5,6 +5,7 @@ import { fetchSearch } from "../../store/actions/action-movie";
 import SearchIcon from "@mui/icons-material/Search";
 import { MovieRow } from "../MovieRow/MovieRow";
 import { fetchGenre } from "../../store/actions/action-movie";
+import { POPCORN } from "../../constants/constant";
 
 export const Search = () => {
   const [query, setQuery] = useState("");
@@ -24,9 +25,6 @@ export const Search = () => {
     .finally(() => setLoading(false))
     .catch(() => setError(true));
   };
-
-  const popcorn =
-    "https://as2.ftcdn.net/v2/jpg/02/07/53/73/1000_F_207537392_hQeHBy8BI4oFPzDmhjF94IHb1Tu8jZyG.jpg";
 
 
   return (
@@ -63,7 +61,7 @@ export const Search = () => {
                   key={el.id}
                   id={el?.id}
                   img={el?.poster_path || el?.backdrop_path}
-                  popcorn={popcorn}
+                  popcorn={POPCORN}
                   title={el.original_title || el.original_name || el.title}
                   release_date={el.release_date || el.first_air_date}
                   rate={el.vote_average}
