@@ -1,83 +1,18 @@
 import {
-  FETCH_MOVIES,
-  MOVIE_DISCOVER,
-  MOVIE_TV,
-  MOVIE_TOP_RATED,
-  SEARCH_MOVIE,
-  FETCH_GENRES,
-  FETCH_DETAIL,
-  FETCH_ALL_MOVIE
-} from "./type";
-const API_KEY = "e41e10a70ecb26587607640ae2112868";
-const BASE_URL = "https://api.themoviedb.org/3";
-
-const allMoviePayload = (payload) => {
-  return {
-    type: FETCH_ALL_MOVIE,
-    payload
-  }
-}
-
-const moviePayload = (payload) => {
-  return {
-    type: FETCH_MOVIES,
-    payload,
-  };
-};
-
-const discoverPayload = (payload) => {
-  return {
-    type: MOVIE_DISCOVER,
-    payload,
-  };
-};
-
-const tvPayload = (payload) => {
-  return {
-    type: MOVIE_TV,
-    payload,
-  };
-};
-
-const topRatedPayload = (payload) => {
-  return {
-    type: MOVIE_TOP_RATED,
-    payload,
-  };
-};
-
-const searchPayload = (payload) => {
-  return {
-    type: SEARCH_MOVIE,
-    payload,
-  };
-};
-
-const genrePayload = (payload) => {
-  return {
-    type: FETCH_GENRES,
-    payload,
-  };
-};
-
-const detailPayload = (payload) => {
-  return {
-    type: FETCH_DETAIL,
-    payload,
-  };
-};
-
-// https://imdb-api.com/API/MostPopularMovies/k_40r463mr
-// https://api.themoviedb.org/3/genre/movie/list?api_key=e41e10a70ecb26587607640ae2112868&language=en-US
-// https://api.themoviedb.org/3/search/keyword?query=action&api_key=e41e10a70ecb26587607640ae2112868&page=1
-// /${type}/${id}?language=en-US&api_key=${API_KEY}
-
-// filter with genre
-// https://api.themoviedb.org/3/discover/movie?api_key=e41e10a70ecb26587607640ae2112868&with_genres=28 
+  allMoviePayload,
+  moviePayload,
+  discoverPayload,
+  tvPayload,
+  topRatedPayload,
+  searchPayload,
+  genrePayload,
+  detailPayload,
+} from "./payload-movies";
+import { API_KEY, API_URL } from "../../constants/constant";
 
 const fetchMovie = () => (dispatch) => {
   return fetch(
-    `${BASE_URL}/trending/all/week?api_key=${API_KEY}&language=en-US`
+    `${API_URL}/trending/all/week?api_key=${API_KEY}&language=en-US`
   )
     .then((res) => {
       if (!res.ok) throw new Error(`Http error Status: ${res.status}`);
@@ -90,7 +25,7 @@ const fetchMovie = () => (dispatch) => {
 
 const fetchFilter = (genre) => (dispatch) => {
   return fetch(
-    `${BASE_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}`
+    `${API_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}`
   )
     .then((res) => {
       if (!res.ok) throw new Error("HTTP Error Status: " + res.status);
@@ -103,7 +38,7 @@ const fetchFilter = (genre) => (dispatch) => {
 
 const fetchTVShow = () => (dispatch) => {
   return fetch(
-    `${BASE_URL}/discover/tv?api_key=${API_KEY}&with_network=123&language=en-US`
+    `${API_URL}/discover/tv?api_key=${API_KEY}&with_network=123&language=en-US`
   )
     .then((res) => {
       if (!res.ok) throw new Error("HTTP Error Status: " + res.status);
@@ -115,7 +50,7 @@ const fetchTVShow = () => (dispatch) => {
 };
 
 const fetchTopRate = () => (dispatch) => {
-  return fetch(`${BASE_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US`)
+  return fetch(`${API_URL}/movie/top_rated?api_key=${API_KEY}&language=en-US`)
     .then((res) => {
       if (!res.ok) throw new Error("HTTP Error Status: " + res.status);
       return res.json();
@@ -125,7 +60,7 @@ const fetchTopRate = () => (dispatch) => {
 
 const fetchSearch = (query) => (dispatch) => {
   return fetch(
-    `${BASE_URL}/search/movie?query=${query}&api_key=${API_KEY}&page=1`
+    `${API_URL}/search/movie?query=${query}&api_key=${API_KEY}&page=1`
   )
     .then((res) => {
       if (!res.ok) throw new Error("HTTP Error Status: " + res.status);
@@ -135,7 +70,7 @@ const fetchSearch = (query) => (dispatch) => {
 };
 
 const fetchGenre = () => (dispatch) => {
-  return fetch(`${BASE_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`)
+  return fetch(`${API_URL}/genre/movie/list?api_key=${API_KEY}&language=en-US`)
     .then((res) => {
       if (!res.ok) throw new Error("HTTP Error Status: " + res.status);
       return res.json();
@@ -146,7 +81,7 @@ const fetchGenre = () => (dispatch) => {
 const fetchDetail = (info) => (dispatch) => {
   const { type, id } = info;
 
-  return fetch(`${BASE_URL}/${type}/${id}?language=en-US&api_key=${API_KEY}`)
+  return fetch(`${API_URL}/${type}/${id}?language=en-US&api_key=${API_KEY}`)
     .then((res) => {
       if (!res.ok) throw new Error("HTTP Error Status: " + res.status);
       return res.json();
@@ -155,14 +90,13 @@ const fetchDetail = (info) => (dispatch) => {
 };
 
 const fetchAllMovies = () => (dispatch) => {
-  
-  return fetch('https://imdb-api.com/API/MostPopularMovies/k_40r463mr')
-   .then((res) => {
-    if(!res.ok) throw new Error("HTTP Error Status: " + res.status)
-    return res.json()
-   })
-   .then((res) => dispatch(allMoviePayload(res)))
-}
+  return fetch("https://imdb-api.com/API/MostPopularMovies/k_40r463mr")
+    .then((res) => {
+      if (!res.ok) throw new Error("HTTP Error Status: " + res.status);
+      return res.json();
+    })
+    .then((res) => dispatch(allMoviePayload(res)));
+};
 
 export {
   fetchMovie,
@@ -172,5 +106,5 @@ export {
   fetchSearch,
   fetchGenre,
   fetchDetail,
-  fetchAllMovies
+  fetchAllMovies,
 };

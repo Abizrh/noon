@@ -19,4 +19,15 @@ const BASE_URL = "https://image.tmdb.org/t/p/original";
 const POPCORN =
 "https://as2.ftcdn.net/v2/jpg/02/07/53/73/1000_F_207537392_hQeHBy8BI4oFPzDmhjF94IHb1Tu8jZyG.jpg";
 
-export { DISCOVER, BASE_URL, POPCORN };
+const API_KEY = "e41e10a70ecb26587607640ae2112868";
+const API_URL = "https://api.themoviedb.org/3";
+
+// https://imdb-api.com/API/MostPopularMovies/k_40r463mr
+// https://api.themoviedb.org/3/genre/movie/list?api_key=e41e10a70ecb26587607640ae2112868&language=en-US
+// https://api.themoviedb.org/3/search/keyword?query=action&api_key=e41e10a70ecb26587607640ae2112868&page=1
+// /${type}/${id}?language=en-US&api_key=${API_KEY}
+
+// filter with genre
+// https://api.themoviedb.org/3/discover/movie?api_key=e41e10a70ecb26587607640ae2112868&with_genres=28
+
+export { DISCOVER, BASE_URL, POPCORN, API_KEY, API_URL };

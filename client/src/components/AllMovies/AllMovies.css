@@ -1,55 +1,65 @@
 .card {
-	background: white;
-	margin-bottom: 2em;
-    /* margin-left: 20px;	 */
+  border-radius: 10px;
+  transition: .3s;
+  position: relative;
+  margin-bottom: 10px;
+  /* margin-left: 20px;	 */
 }
 
 
-img {
-	display: block;
-	border: 0;
-	width: 100%;
-	height: auto;
+.card img {
+  display: block;
+  border: 0;
+  width: 100%;
+  height: 250px;
+  border-radius: 10px;
+  object-fit: cover;
+  /* margin-bottom: 10px; */
+}
+
+.card img:hover {
+  transform: scale(1.1);
+  border: 1px solid #222;
 }
 
 
 .card a {
-	color: black;
-	text-decoration: none;
+  color: black;
+  text-decoration: none;
 }
 
 .card a:hover {
-	box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
+  box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
 }
 
 .card-content {
-	padding: 1.4em;
+  padding: 1.4em;
 }
 
 .card-content h2 {
-	margin-top: 0;
-	margin-bottom: .5em;
-	font-weight: bold;
+  margin-top: 0;
+  margin-bottom: .5em;
+  font-weight: bold;
 }
 
 .card-content p {
-	font-size: 80%;
+  font-size: 80%;
 }
 
 .card {
-    flex: 1 0 500px;
-    box-sizing: border-box;
-    margin: 2rem .40em;
+  flex: 1 0 500px;
+  box-sizing: border-box;
+  margin: .20rem .40em;
+}
+
+@media screen and (min-width: 40em) {
+  .card {
+    max-width: calc(50% - 1em);
   }
-  
-  @media screen and (min-width: 40em) {
-    .card {
-       max-width: calc(50% -  1em);
-    }
+}
+
+@media screen and (min-width: 60em) {
+  .card {
+    max-width: calc(25% - 1em);
   }
-  
-  @media screen and (min-width: 60em) {
-    .card {
-        max-width: calc(25% - 1em);
-    }
-  }
+}

@@ -1,93 +1,41 @@
 import React from "react";
-import './AllMovies.css'
+import { Link } from "react-router-dom";
+import "./AllMovies.css";
+import { LazyLoadImage } from 'react-lazy-load-image-component'
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import { BASE_URL } from "../../constants/constant";
 
-const AllMovies = () => {
+
+const AllMovies = ({
+  id,
+  img,
+  title,
+  type,
+  release_date,
+  image,
+  rate,
+  grid,
+  genre,
+}) => {
   return (
     <>
       <article className="card">
-        <a href="#">
+        <Link  to={`/${type}/${id}`}>
           <picture class="thumbnail">
-            <img
-              src="http://www.abbeyjfitzgerald.com/wp-content/uploads/2017/02/image-example-01.jpg"
-              alt="A banana that looks like a bird"
+            <LazyLoadImage
+              src={image ? image : `${BASE_URL}${img}`}
+              alt={title}
+              effect="blur"
             />
           </picture>
           <div class="card-content">
-            <h2>Vacation Image 01</h2>
+            {/* <h2>Vacation Image 01</h2>
             <p>
               TUX re-inventing the wheel, and move the needle. Feature creep
               dogpile that but diversify kpis but market-facing.
-            </p>
+            </p> */}
           </div>
-        </a>
-      </article>
-      <article className="card">
-        <a href="#">
-          <picture class="thumbnail">
-            <img
-              src="http://www.abbeyjfitzgerald.com/wp-content/uploads/2017/02/image-example-01.jpg"
-              alt="A banana that looks like a bird"
-            />
-          </picture>
-          <div class="card-content">
-            <h2>Vacation Image 01</h2>
-            <p>
-              TUX re-inventing the wheel, and move the needle. Feature creep
-              dogpile that but diversify kpis but market-facing.
-            </p>
-          </div>
-        </a>
-      </article>
-      <article className="card">
-        <a href="#">
-          <picture class="thumbnail">
-            <img
-              src="http://www.abbeyjfitzgerald.com/wp-content/uploads/2017/02/image-example-01.jpg"
-              alt="A banana that looks like a bird"
-            />
-          </picture>
-          <div class="card-content">
-            <h2>Vacation Image 01</h2>
-            <p>
-              TUX re-inventing the wheel, and move the needle. Feature creep
-              dogpile that but diversify kpis but market-facing.
-            </p>
-          </div>
-        </a>
-      </article>
-      <article className="card">
-        <a href="#">
-          <picture class="thumbnail">
-            <img
-              src="http://www.abbeyjfitzgerald.com/wp-content/uploads/2017/02/image-example-01.jpg"
-              alt="A banana that looks like a bird"
-            />
-          </picture>
-          <div class="card-content">
-            <h2>Vacation Image 01</h2>
-            <p>
-              TUX re-inventing the wheel, and move the needle. Feature creep
-              dogpile that but diversify kpis but market-facing.
-            </p>
-          </div>
-        </a>
-      </article>
-      <article className="card">
-        <a href="#">
-          <picture class="thumbnail">
-            <img
-              src="http://www.abbeyjfitzgerald.com/wp-content/uploads/2017/02/image-example-01.jpg"
-              alt="A banana that looks like a bird"
-            />
-          </picture>
-          <div class="card-content">
-            <h2>Vacation Image 01</h2>
-            <p>
-              TUX re-inventing the wheel, and move the needle. Feature creep
-              dogpile that but diversify kpis but market-facing.
-            </p>
-          </div>
-        </a>
+        </Link>
       </article>
     </>
   );

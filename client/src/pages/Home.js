@@ -13,10 +13,9 @@ import {
   fetchTVShow,
 } from "../store/actions/action-movie";
 
-export const MoviesContext = createContext()
+export const MoviesContext = createContext();
 
 export const Home = () => {
-
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const movies = useSelector((state) => state.movie);
@@ -39,7 +38,6 @@ export const Home = () => {
   useEffect(() => {
     dispatch(fetchAllMovies());
   }, []);
-
 
   return (
     <MoviesContext.Provider>
@@ -120,14 +118,27 @@ export const Home = () => {
             })}
         </div>
 
+        {/* Use the different API */}
         <div className="heading">All</div>
         <main className="all_movies">
-            {/* <section */}
-            <div className="centered">
-              <section className="cards">
-                <AllMovies />
-              </section>
-            </div>
+          <div className="centered">
+            <section className="cards">
+              {movies?.movies?.results?.map((el) => {
+                return (
+                  <AllMovies
+                    key={el.id}
+                    id={el?.id}
+                    img={el?.poster_path}
+                    title={el.original_title || el.original_name || el.title}
+                    release_date={el.release_date || el.first_air_date}
+                    rate={el.vote_average}
+                    genre={el.genre_ids}
+                    type="movie"
+                  />
+                );
+              })}
+            </section>
+          </div>
         </main>
       </div>
       <Leftbar />
