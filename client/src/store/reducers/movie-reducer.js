@@ -11,7 +11,7 @@ import {
 
 const initState = {
   movies: [],
-  filter: [],
+  pagination: [],
   tvShow: [],
   topRated: [],
   search: [],
@@ -30,7 +30,7 @@ const movieReducer = (state = initState, action) => {
     case MOVIE_DISCOVER:
       return {
         ...state,
-        filter: action.payload,
+        pagination: action.payload,
       };
     case MOVIE_TOP_RATED:
       return {

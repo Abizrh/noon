@@ -5,12 +5,13 @@ import { Discover } from "../components/Discover/Discover";
 import { Spinner } from "../components/LazyLoad/Spinner";
 import { Leftbar } from "../components/Leftbar/GenreTag/GenreTag";
 import { MovieRow } from "../components/MovieRow/MovieRow";
+import { Pagination } from "@mui/material";
 import { DISCOVER } from "../constants/constant";
 import {
-  fetchAllMovies,
   fetchMovie,
   fetchTopRate,
   fetchTVShow,
+  fetchMoviePagination,
 } from "../store/actions/action-movie";
 
 export const MoviesContext = createContext();
@@ -18,6 +19,7 @@ export const MoviesContext = createContext();
 export const Home = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
+  const [pages, setPages] = useState(1);
   const movies = useSelector((state) => state.movie);
   const dispatch = useDispatch();
 
@@ -36,8 +38,16 @@ export const Home = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(fetchAllMovies());
+    // dispatch(fetchAllMovies());
+    dispatch(fetchMoviePagination(pages));
   }, []);
+
+  console.log(movies.pagination, "MOVIES");
+
+  const handlePageChange = (event, value) => {
+    setPages(value)
+    dispatch(fetchMoviePagination(value))
+  };
 
   return (
     <MoviesContext.Provider>
@@ -123,7 +133,7 @@ export const Home = () => {
         <main className="all_movies">
           <div className="centered">
             <section className="cards">
-              {movies?.movies?.results?.map((el) => {
+              {movies?.pagination?.results?.map((el) => {
                 return (
                   <AllMovies
                     key={el.id}
@@ -138,6 +148,17 @@ export const Home = () => {
                 );
               })}
             </section>
+            <Pagination
+              className="my-3 pagination"
+              count={movies.pagination.total_pages}
+              page={pages}
+              siblingCount={1}
+              color="primary"
+              boundaryCount={1}
+              variant="outlined"
+              shape="rounded"
+              onChange={handlePageChange}
+            />
           </div>
         </main>
       </div>

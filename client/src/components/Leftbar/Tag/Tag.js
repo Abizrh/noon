@@ -2,7 +2,6 @@ import React from 'react'
 import './Tag.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
-import { fetchFilter } from '../../../store/actions/action-movie'
 
 export const Tag = ({ tag, active, id }) => {
   const dispatch = useDispatch()

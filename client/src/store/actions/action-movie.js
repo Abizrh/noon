@@ -1,5 +1,4 @@
 import {
-  allMoviePayload,
   moviePayload,
   discoverPayload,
   tvPayload,
@@ -23,9 +22,9 @@ const fetchMovie = () => (dispatch) => {
     });
 };
 
-const fetchFilter = (genre) => (dispatch) => {
+const fetchMoviePagination = (page) => (dispatch) => {
   return fetch(
-    `${API_URL}/discover/movie?api_key=${API_KEY}&with_genres=${genre}`
+    `${API_URL}/discover/movie?api_key=${API_KEY}&page=${page}`
   )
     .then((res) => {
       if (!res.ok) throw new Error("HTTP Error Status: " + res.status);
@@ -89,22 +88,14 @@ const fetchDetail = (info) => (dispatch) => {
     .then((res) => dispatch(detailPayload(res)));
 };
 
-const fetchAllMovies = () => (dispatch) => {
-  return fetch("https://imdb-api.com/API/MostPopularMovies/k_40r463mr")
-    .then((res) => {
-      if (!res.ok) throw new Error("HTTP Error Status: " + res.status);
-      return res.json();
-    })
-    .then((res) => dispatch(allMoviePayload(res)));
-};
+
 
 export {
   fetchMovie,
-  fetchFilter,
+  fetchMoviePagination,
   fetchTVShow,
   fetchTopRate,
   fetchSearch,
   fetchGenre,
   fetchDetail,
-  fetchAllMovies,
 };
