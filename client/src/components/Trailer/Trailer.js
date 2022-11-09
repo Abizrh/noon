@@ -4,7 +4,7 @@ import Backdrop from "@mui/material/Backdrop";
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import Button from "@mui/material/Button";
-import { PlayArrow, Language } from "@mui/icons-material";
+import { PlayArrow } from "@mui/icons-material";
 import { useSpring, animated } from "@react-spring/web";
 
 const Fade = React.forwardRef(function Fade(props, ref) {
@@ -46,7 +46,7 @@ const style = {
   p: 4,
 };
 
-export default function Trailer({ embedId, name}) {
+export default function Trailer({trailers}) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -73,15 +73,14 @@ export default function Trailer({ embedId, name}) {
             <iframe
               id="ytplayer"
               type="text/html"
-              src={`https://www.youtube.com/embed/${embedId}`}
+              src={`https://www.youtube.com/embed/${trailers[1]?.key}`}
               frameBorder="0"
-              playsinline="1"
               allowFullScreen
               width={'1000px'}
               height={'640px'}
               sandbox="allow-scripts allow-presentation allow-same-origin"
               allow="autoplay; fullscreen; picture-in-picture; xr-spatial-tracking; clipboard-write"
-              title={name}
+              title={trailers[1]?.name || trailers[2]?.name}
             />
           </Box>
         </Fade>

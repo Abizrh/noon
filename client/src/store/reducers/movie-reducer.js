@@ -19,7 +19,7 @@ const initState = {
   genres: [],
   detail: {},
   all: [],
-  trailers : []
+  trailers : {}
 };
 
 const movieReducer = (state = initState, action) => {

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { fetchDetail, fetchTrailer } from "../store/actions/action-movie";
-import { PlayArrow, Language } from "@mui/icons-material";
+import { Language } from "@mui/icons-material";
 import { BASE_URL } from "../constants/constant";
 import { trunc } from "../helpers/helpers";
 import Trailer from "../components/Trailer/Trailer";
@@ -34,11 +34,17 @@ export const Detail = () => {
   }, []);
 
   useEffect(() => {
-    dispatch(fetchTrailer(info))
-  }, [])
+    dispatch(fetchTrailer(info));
+  }, []);
 
+  let trailers = []
 
-  // console.log(movie.trailers?.results[0].key)
+  movie.trailers?.results?.map((allTrailer) => {
+
+    trailers.push(allTrailer)
+
+  });
+
 
   return (
     <>
@@ -76,7 +82,7 @@ export const Detail = () => {
           </p>
         </div>
         <div className="button__box">
-          <Trailer embedId={movie.trailers?.results[0].key} name={movie.trailers?.results[0].name}  />
+          <Trailer  trailers={trailers}/>
           <button>
             <Language />
           </button>

@@ -92,7 +92,7 @@ const fetchDetail = (info) => (dispatch) => {
 const fetchTrailer = (info) => (dispatch) => {
   const { type, id} = info
 
-  return fetch(`${API_URL}/${type}/${id}/videos?api_key=${API_KEY}`)
+  return fetch(`${API_URL}/${type}/${id}/videos?api_key=${API_KEY}&append_to_response=videos`)
    .then((res) => {
     if(!res.ok) throw new Error("HTTP Error Status: " + res.status)
     return res.json()
