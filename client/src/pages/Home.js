@@ -23,6 +23,8 @@ export const Home = () => {
   const movies = useSelector((state) => state.movie);
   const dispatch = useDispatch();
 
+  
+
   useEffect(() => {
     dispatch(fetchMovie())
       .finally(() => setLoading(false))
@@ -37,12 +39,14 @@ export const Home = () => {
     dispatch(fetchTopRate());
   }, []);
 
+
+
   useEffect(() => {
     // dispatch(fetchAllMovies());
     dispatch(fetchMoviePagination(pages));
   }, []);
 
-  console.log(movies.pagination, "MOVIES");
+
 
   const handlePageChange = (event, value) => {
     setPages(value)
@@ -50,7 +54,7 @@ export const Home = () => {
   };
 
   return (
-    <MoviesContext.Provider>
+    <MoviesContext.Provider value={[]}>
       <div className="home">
         <div className="heading top__heading">
           <h3>Discovers</h3>{" "}

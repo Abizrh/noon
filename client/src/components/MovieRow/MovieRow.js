@@ -3,7 +3,7 @@ import "./MovieRow.css";
 import { Link } from "react-router-dom";
 import { Star, FavoriteBorder, Favorite } from "@mui/icons-material";
 import { useDispatch, useSelector } from "react-redux";
-import { fetchGenre } from "../../store/actions/action-movie";
+import { fetchGenre, fetchTrailer } from "../../store/actions/action-movie";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { BASE_URL } from "../../constants/constant";
@@ -31,7 +31,7 @@ export const MovieRow = ({
 
   const movieGenre = movies.genres?.genres;
 
-  const favHandler = () => {
+  const favHandler = (fav, movies) => {
     setIcon(<Favorite />);
   };
 

@@ -6,6 +6,7 @@ const MOVIE_TV = 'movies/movieTv'
 const SEARCH_MOVIE = 'movies/searchMovies'
 const FETCH_DETAIL = 'movies/fetchDetail'
 const FETCH_ALL_MOVIE = 'allMovies/fetchAllMovies'
+const FETCH_TRAILER = 'movies/fetchTrailer'
 
 
 export {
@@ -16,5 +17,6 @@ export {
     SEARCH_MOVIE,
     FETCH_GENRES,
     FETCH_DETAIL,
-    FETCH_ALL_MOVIE
+    FETCH_ALL_MOVIE,
+    FETCH_TRAILER
 }

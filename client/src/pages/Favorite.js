@@ -16,11 +16,7 @@ export const Favorite = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  // useEffect(() => {
-  //   dispatch(fetchAllMovies())
-  // }, [])
 
-  
   return (
     <>
     <div>Favorite</div>

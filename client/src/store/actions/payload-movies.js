@@ -6,7 +6,8 @@ import {
     SEARCH_MOVIE,
     FETCH_GENRES,
     FETCH_DETAIL,
-    FETCH_ALL_MOVIE
+    FETCH_ALL_MOVIE,
+    FETCH_TRAILER
   } from "./type";
 
   const allMoviePayload = (payload) => {
@@ -65,6 +66,13 @@ import {
     };
   };
 
+  const trailerPayload = (payload) => {
+    return {
+      type: FETCH_TRAILER,
+      payload
+    }
+  }
+
 export {
     allMoviePayload,
     moviePayload,
@@ -73,5 +81,6 @@ export {
     topRatedPayload,
     searchPayload,
     genrePayload,
-    detailPayload
+    detailPayload,
+    trailerPayload
 }

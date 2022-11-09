@@ -7,6 +7,7 @@ import {
   FETCH_GENRES,
   FETCH_DETAIL,
   FETCH_ALL_MOVIE,
+  FETCH_TRAILER,
 } from "../actions/type";
 
 const initState = {
@@ -18,6 +19,7 @@ const initState = {
   genres: [],
   detail: {},
   all: [],
+  trailers : []
 };
 
 const movieReducer = (state = initState, action) => {
@@ -62,7 +64,11 @@ const movieReducer = (state = initState, action) => {
         ...state,
         all: action.payload,
       };
-
+    case FETCH_TRAILER: 
+      return {
+        ...state,
+        trailers: action.payload,
+      }
     default:
       return state;
   }

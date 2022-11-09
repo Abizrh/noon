@@ -6,6 +6,7 @@ import {
   searchPayload,
   genrePayload,
   detailPayload,
+  trailerPayload,
 } from "./payload-movies";
 import { API_KEY, API_URL } from "../../constants/constant";
 
@@ -88,6 +89,17 @@ const fetchDetail = (info) => (dispatch) => {
     .then((res) => dispatch(detailPayload(res)));
 };
 
+const fetchTrailer = (info) => (dispatch) => {
+  const { type, id} = info
+
+  return fetch(`${API_URL}/${type}/${id}/videos?api_key=${API_KEY}`)
+   .then((res) => {
+    if(!res.ok) throw new Error("HTTP Error Status: " + res.status)
+    return res.json()
+   })
+   .then((res) => dispatch(trailerPayload(res)))
+}
+
 
 
 export {
@@ -98,4 +110,5 @@ export {
   fetchSearch,
   fetchGenre,
   fetchDetail,
+  fetchTrailer
 };

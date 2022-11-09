@@ -27,6 +27,8 @@ const API_URL = "https://api.themoviedb.org/3";
 // https://api.themoviedb.org/3/search/keyword?query=action&api_key=e41e10a70ecb26587607640ae2112868&page=1
 // /${type}/${id}?language=en-US&api_key=${API_KEY}
 
+// https://api.themoviedb.org/3/movie/157336/videos?api_key=e41e10a70ecb26587607640ae2112868
+
 // filter with genre
 // https://api.themoviedb.org/3/discover/movie?api_key=e41e10a70ecb26587607640ae2112868&with_genres=28
 

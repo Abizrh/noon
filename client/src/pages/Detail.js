@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
-import { fetchDetail } from "../store/actions/action-movie";
+import { fetchDetail, fetchTrailer } from "../store/actions/action-movie";
 import { PlayArrow, Language } from "@mui/icons-material";
 import { BASE_URL } from "../constants/constant";
 import { trunc } from "../helpers/helpers";
-
+import Trailer from "../components/Trailer/Trailer";
 
 export const Detail = () => {
   const navigate = useNavigate();
@@ -32,6 +32,13 @@ export const Detail = () => {
   useEffect(() => {
     dispatch(fetchDetail(info));
   }, []);
+
+  useEffect(() => {
+    dispatch(fetchTrailer(info))
+  }, [])
+
+
+  // console.log(movie.trailers?.results[0].key)
 
   return (
     <>
@@ -62,15 +69,14 @@ export const Detail = () => {
               movie?.detail.original_name ||
               movie?.detail.original_title}
           </h3>
+
           <p>
             {trunc(movie?.detail.overview, string)}{" "}
             <span onClick={() => stringHandler()}>{show}</span>
           </p>
         </div>
         <div className="button__box">
-          <button>
-            <PlayArrow /> Play
-          </button>
+          <Trailer embedId={movie.trailers?.results[0].key} name={movie.trailers?.results[0].name}  />
           <button>
             <Language />
           </button>

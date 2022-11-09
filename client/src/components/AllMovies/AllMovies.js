@@ -31,8 +31,21 @@ const AllMovies = ({
 
   const movieGenre = movies.genres?.genres;
 
+  const favorites = {
+    id,
+    img,
+    title,
+    type,
+    release_date,
+    image,
+    rate,
+    grid,
+    genre,
+  }
+
   const favHandler = () => {
     setIcon(<Favorite />);
+    localStorage.setItem("favorites", favorites)
   };
 
   const fixGenre = movieGenre?.filter((el) => genre.includes(el.id));
@@ -46,7 +59,7 @@ const AllMovies = ({
     <>
       <article className="card">
         <Link to={`/${type}/${id}`}>
-          <picture class="thumbnail">
+          <picture className="thumbnail">
             <LazyLoadImage
               src={image ? image : `${BASE_URL}${img}`}
               alt={title}
@@ -70,7 +83,7 @@ const AllMovies = ({
             </p>
             <p>{type}</p>
           </div>
-          <div class="card-content">{/* <h3>{trunc(title, 18)}</h3> */}</div>
+          <div className="card-content"></div>
         </Link>
       </article>
     </>
