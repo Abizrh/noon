@@ -144,8 +144,7 @@
 .home {
   flex: 0.7;
   overflow-y: scroll;
-  overflow-x: hidden;
-  background: var(--five-color);
+  background: #2d2e33;
   height: 100vh;
 }
 
@@ -188,7 +187,7 @@
 }
 
 .home .heading::before {
-  content: "";
+  /* content: ""; */
   position: absolute;
   top: 0;
   left: 8px;

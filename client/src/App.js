@@ -9,6 +9,7 @@ import { Reminder } from "./pages/Reminder";
 import { Playlist } from "./pages/Playlist";
 import { Live } from "./pages/Live";
 import { Setting } from "./pages/Setting";
+import { Leftbar } from "./components/Leftbar/GenreTag/GenreTag";
 
 function App() {
   return (
@@ -19,7 +20,8 @@ function App() {
           element={
             <>
               <Sidebar />
-              <Home />I
+              <Home />
+              <Leftbar />
             </>
           }
         />
@@ -81,7 +83,7 @@ function App() {
         <Route path="/:type/:id" element={<Detail />} />
       </Routes>
     </div>
-  );
+  )
 }
 
 export default App;

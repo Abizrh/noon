@@ -15,7 +15,6 @@ export const Discover = ({ discover, type }) => {
     <>
       <div className="discovers">
         <div className="discover__img">
-          {/* <img src={`${base_url}${discover.backdrop_path}`} alt={discover.title} /> */}
           <LazyLoadImage 
            src={`${BASE_URL}${discover.backdrop_path}`} alt={discover.title}
            effect="blur"

@@ -11,8 +11,7 @@ import SideItem from "../SideItem/SideItem";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { useSelector } from "react-redux";
-
+import noon from '../../noon.png'
 
 export const Sidebar = () => {
     const [show, setShow] = React.useState(false);
@@ -20,11 +19,10 @@ export const Sidebar = () => {
     return (
       <>
         <div className={show ? "sidebar side__show" : "sidebar"}>
-          <Link to="/">
-            {" "}
+          <Link className="link" to="/">
             <div className="logo">
               <img
-                src="https://images.vexels.com/media/users/3/229320/isolated/preview/3dbf158d77c22e31cee5eafbdcf5ce0f-square-gradient-logo.png"
+                src={noon}
                 alt="logo"
               />
               <h3>Noon</h3>
@@ -47,14 +45,14 @@ export const Sidebar = () => {
               <SideItem Icon={QueueIcon} Name="Playlist" link="/playlist" />
               <SideItem Icon={PlayCircleOutlineIcon} Name="Live" link="/live" />
               <SideItem Icon={SettingsIcon} Name="Setting" link="/setting" />
-              <SideItem Icon={CloseIcon} close />
+              {/* <SideItem Icon={CloseIcon} close /> */}
             </div>
           </div>
           <div className="menu__icon" onClick={() => setShow(!show)}>
             <MenuIcon />
           </div>
         </div>
-        <div className={show ? 'layer layer__show': 'layer'} onClick={() => setShow(false)}></div>
+        {/* <div className={show ? 'layer layer__show': 'layer'} onClick={() => setShow(false)}></div> */}
       </>
     );
 }

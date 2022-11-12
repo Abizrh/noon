@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import AllMovies from "../components/AllMovies/AllMovies";
 import { Discover } from "../components/Discover/Discover";
@@ -14,7 +14,6 @@ import {
   fetchMoviePagination,
 } from "../store/actions/action-movie";
 
-export const MoviesContext = createContext();
 
 export const Home = () => {
   const [loading, setLoading] = useState(true);
@@ -52,10 +51,10 @@ export const Home = () => {
   };
 
   return (
-    <MoviesContext.Provider value={[]}>
+    <>
       <div className="home">
         <div className="heading top__heading">
-          <h3>Discovers</h3>{" "}
+          <h3>Discovers</h3>
         </div>
         <div className="home__boxx">
           <Discover discover={DISCOVER} type="movie" />
@@ -130,7 +129,6 @@ export const Home = () => {
             })}
         </div>
 
-        {/* Use the different API */}
         <div className="heading">All</div>
         <main className="all_movies">
           <div className="centered">
@@ -165,7 +163,6 @@ export const Home = () => {
           </div>
         </main>
       </div>
-      <Leftbar />
-    </MoviesContext.Provider>
+    </>
   );
 };
