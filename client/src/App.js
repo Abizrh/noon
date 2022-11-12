@@ -3,7 +3,7 @@ import { Home } from "./pages/Home";
 import { Routes, Route } from "react-router-dom";
 import { Detail } from "./pages/Detail";
 import { Sidebar } from "./components/Sidebar/Sidebar";
-import { Favorite } from "@mui/icons-material";
+import { Favorite } from "./pages/Favorite";
 import { Search } from "./components/Search/Search";
 import { Reminder } from "./pages/Reminder";
 import { Playlist } from "./pages/Playlist";

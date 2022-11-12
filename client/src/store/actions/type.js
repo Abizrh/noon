@@ -8,6 +8,12 @@ const FETCH_DETAIL = 'movies/fetchDetail'
 const FETCH_ALL_MOVIE = 'allMovies/fetchAllMovies'
 const FETCH_TRAILER = 'movies/fetchTrailer'
 
+// Watchlist
+
+const ADD_MOVIE_TO_WATCH_LIST = 'movies/addToWatchList'
+const REMOVE_MOVIE_FROM_WATCH_LIST = 'movies/removeWatchList'
+const WATCH_LIST = 'movies/watchList'
+
 
 export {
     FETCH_MOVIES,
@@ -18,5 +24,8 @@ export {
     FETCH_GENRES,
     FETCH_DETAIL,
     FETCH_ALL_MOVIE,
-    FETCH_TRAILER
+    FETCH_TRAILER,
+    ADD_MOVIE_TO_WATCH_LIST,
+    WATCH_LIST,
+    REMOVE_MOVIE_FROM_WATCH_LIST
 }

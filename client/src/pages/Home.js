@@ -23,8 +23,6 @@ export const Home = () => {
   const movies = useSelector((state) => state.movie);
   const dispatch = useDispatch();
 
-  
-
   useEffect(() => {
     dispatch(fetchMovie())
       .finally(() => setLoading(false))
@@ -148,6 +146,7 @@ export const Home = () => {
                     rate={el.vote_average}
                     genre={el.genre_ids}
                     type="movie"
+                    page
                   />
                 );
               })}

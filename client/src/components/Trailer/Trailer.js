@@ -46,10 +46,13 @@ const style = {
   p: 4,
 };
 
-export default function Trailer({trailers}) {
+export default function Trailer({ trailers }) {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const url = window.location;
+  console.log(url)
 
   return (
     <div>
@@ -69,15 +72,15 @@ export default function Trailer({trailers}) {
         }}
       >
         <Fade in={open}>
-          <Box sx={style}>
+          <Box sx={style}   className="ytframe">
             <iframe
-              id="ytplayer"
+            
               type="text/html"
               src={`https://www.youtube.com/embed/${trailers[1]?.key}`}
               frameBorder="0"
               allowFullScreen
-              width={'1000px'}
-              height={'640px'}
+              width={"1000px"}
+              height={"640px"}
               sandbox="allow-scripts allow-presentation allow-same-origin"
               allow="autoplay; fullscreen; picture-in-picture; xr-spatial-tracking; clipboard-write"
               title={trailers[1]?.name || trailers[2]?.name}

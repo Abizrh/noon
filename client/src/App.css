@@ -215,6 +215,8 @@
 .movie__other {
   display: flex;
   align-items: center;
+  width: 100px ;
+  gap: 10px;
   justify-content: space-between;
 }
 
@@ -236,6 +238,7 @@
 .movie__other p:nth-child(2) {
   font-size: 12px;
   padding: 2px;
+  width: 150px;
   color: var(--four-color);
   text-transform: capitalize;
   border: 1px solid gray;

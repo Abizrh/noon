@@ -21,9 +21,10 @@ export const Search = () => {
 
   const handleSearch = (e) => {
     e.preventDefault();
-    dispatch(fetchSearch(query))
-    .finally(() => setLoading(false))
-    .catch(() => setError(true));
+    setQuery(e.target.value);
+    dispatch(fetchSearch(e.target.value))
+      .finally(() => setLoading(false))
+      .catch(() => setError(true));
   };
 
 
@@ -32,20 +33,20 @@ export const Search = () => {
       <div className="searchh">
         <div className="search__top">
           <div className="heading"> Results</div>
-          <form className="search" onSubmit={(e) => handleSearch(e)}>
+          <form className="search">
           <SearchIcon />
           <input
             type="text"
             placeholder="search..."
             value={query}
             maxLength="20"
-            onChange={(e) => setQuery(e.target.value)}
+            onChange={handleSearch}
           />
           </form>
         </div>
         <div className="home__box">
-          {/* {loading && <h1>Loading...</h1>}
-        {error && <h1>Something Went Wrong !</h1>} */}
+          {loading && <h1>Loading...</h1>}
+        {error && <h1>Something Went Wrong !</h1>}
           {movies?.search?.results?.length <= 0 && (
             <h2>
               Sorry we did'nt found what you looking for, make sure your search

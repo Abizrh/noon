@@ -60,13 +60,15 @@ const fetchTopRate = () => (dispatch) => {
 
 const fetchSearch = (query) => (dispatch) => {
   return fetch(
-    `${API_URL}/search/movie?query=${query}&api_key=${API_KEY}&page=1`
+    `${API_URL}/search/movie?query=${query ? query: 'batman' }&api_key=${API_KEY}&page=1`
   )
     .then((res) => {
       if (!res.ok) throw new Error("HTTP Error Status: " + res.status);
       return res.json();
     })
-    .then((res) => dispatch(searchPayload(res)));
+    .then((res) => {
+      dispatch(searchPayload(res))
+    });
 };
 
 const fetchGenre = () => (dispatch) => {
@@ -99,6 +101,8 @@ const fetchTrailer = (info) => (dispatch) => {
    })
    .then((res) => dispatch(trailerPayload(res)))
 }
+
+
 
 
 

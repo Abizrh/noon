@@ -11,6 +11,7 @@ import SideItem from "../SideItem/SideItem";
 import { Link } from "react-router-dom";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
+import { useSelector } from "react-redux";
 
 
 export const Sidebar = () => {
